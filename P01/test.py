@@ -1,8 +1,12 @@
+import sys
 import cv2
 
 
-
 img_color = cv2.imread('Unknown-2.jpg', cv2.IMREAD_COLOR)
+
+if img_color is None:
+    print('Image lad failed!')
+    sys.exit()
 
 cv2.namedWindow('Show Image')
 cv2.imshow('Show Image', img_color)
