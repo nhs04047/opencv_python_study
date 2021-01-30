@@ -30,4 +30,36 @@ def onMouse(event, x, y, flags, param): # flags는 키가 눌린 여부, param�
 
     # 왼쪽 마우스를 눌렀을 때
     if event == cv2.EVENT_LBUTTONDOWN:
-        for i in range(4)
+        for i in range(4):
+            if cv2.norm(srcQuad[i]-(x,y)) < 25: # 클릭한 점이 원 안에 있는지 확인
+                dragSrc[i]=True
+                pt0ld = (x,y) # 마우스를 이동할 때 모서리도 따라 움직이도록 설정
+                break
+
+            if event == cv2.EVENT_LBUTTONUP: # 마우스를 땜
+                for i in range(4):
+                    dragSrc[i] = False
+
+            if event == cv2.EVENT_MOUSEMOVE: # 마우스 왼쪽 버튼이 눌려 있을 때 모서리 움직임
+                for i in range(4):
+                    if dragSrc[i]: # dragSrc가 True일 때
+                        dx = x - pt0ld[0] # 이전의 마우스 점에서 dx, dy만큼 이동
+                        dy = y - pt0ld[1]
+
+                        srcQuad[i] += (dx, dy) # 이동한 만큼 더해줌
+
+                        cpy = drawROI(src, srcQuad)
+                        cv2.imshow('img', cpy) # 수정된 좌표로 모서리 이동
+                        pt0ld = (x, y) # 현재 점으로 설정
+                        
+src = cv2.imread('docu.jpg')
+
+if src is None:
+    print('Image open failed')
+    sys.exit
+
+# 영상의 크기
+h, w = src.shape[:2]
+dw = 500 # 똑바로 핀 영상의 가로 크기
+dh = round(dw * 297 / 210) # A4용지 크기
+
