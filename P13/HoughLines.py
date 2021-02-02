@@ -13,6 +13,15 @@ edges = cv2.Canny(src, 50, 150)
 
 # 직선 성분 검출
 lines = cv2.HoughLinesP(edges, 1, np.pi / 180., 160, minLineLength=50, maxLineGap=5)
+# cv2.HoughLinesP(image, rho, theta, threshold, lines=None, minLineLength=None, maxLineGap=None) -> lines
+# image: 입력 에지 영상
+# rho: 축적 배열에서 rho 값의 간격. (e.g.) 1.0 → 1픽셀 간격
+# theta: 축적 배열에서 theta 값의 간격. (e.g.) np.pi / 180 → 1 간격.
+# threshold: 축적 배열에서 직선으로 판단할 임계값
+# lines: 선분의 시작과 끝 좌표(x1, y1, x2, y2) 정보를 담고 있는 numpy.ndarray. shape=(N, 1, 4). dtype=numpy.int32.
+# minLineLength: 검출할 선분의 최소 길이
+# maxLineGap: 직선으로 간주할 최대 에지 점 간격
+
 
 # 컬러 영상으로 변경 (영상에 빨간 직선을 그리기 위해)
 dst = cv2.cvtColor(edges, cv2.COLOR_GRAY2BGR)
