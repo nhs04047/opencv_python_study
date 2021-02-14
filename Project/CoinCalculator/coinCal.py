@@ -16,3 +16,21 @@ circles = cv2.HoughCircles(blr, cv2.HOUGH_GRADIENT, 1, 50, param1 = 150, param2 
 
 sum_of_money = 0
 dst = src.copy()
+if circles is not None:
+    for i in range(circles.shape[1]):
+        cx, cy, radius = circles[0][i]
+        cv2.circle(dst, (cx, cy), int(radius), (0,0,255), 2, cv2.LINE_AA)
+
+        x1 = int(cx - radius)
+        y1 = int(cy - radius)
+        x2 = int(cx + radius)
+        y2 = int(cy + radius)
+        radius = int(radius)
+
+        crop = dst[y1:y2, x1:x2, :]
+        ch, cw = crop.shape[:2]
+
+        mask = np.zeros((ch,cw), np.unit8)
+        cv2.circle(mask, (cw//2, ch//2), radius, 255, -1)
+
+        hsv = cv2.cvtColor(crop, cv2.CO)
