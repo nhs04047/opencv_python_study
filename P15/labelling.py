@@ -7,8 +7,8 @@
 # • connectivity: 4 또는 8. 기본값은 8.
 # • ltype: labels 타입. cv2.CV_32S 또는 cv2.CV_16S. 기본값은 cv2.CV_32S.
 # • retval: 객체 개수. N을 반환하면 [0, N-1]의 레이블이 존재 하며, 0은 배경을 의미. (실제 흰색 객체 개수는 N-1개)
-# retval : 객체 갯수 + 1 (배경 포함)을 반환
-# labels : 레이블맵 행렬을 반환
+# retval : 객체 갯수 + 1 (배경 포함)을 반환.
+# labels : 레이블맵 행렬을 반환.
 
 # 객체 정보를 함께 반환하는 레이블링 함수 - cv2.connectedComponentsWinthStats
 
