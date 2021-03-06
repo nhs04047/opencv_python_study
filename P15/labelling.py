@@ -23,3 +23,32 @@
 # labels : 객체에 번호가 지정된 레이블 맵
 # stats : N행5열, N은 객체 수 +1 이며 각각의 행은 번호가 지정된 객체를 의미, 5열에는 x,y,width,height, area 순으로 정보가 담겨있음, x, y는 좌측 상단 좌표를 의미하며 area는 면적, 픽셀의 수를 의미
 # centroids : N행 2열, 2열에는 x,y 무게 중심 좌표가 입력되어 있음, 무게 중심 좌표는 픽셀의 x좌표를 다 더해서 갯수로 나눈 값임, y좌표도 동일
+
+import sys
+import cv2
+
+src = cv2.imread('image.jpg', cv2.IMREAD_GRAYSCALE)
+
+if src is None:
+    print('Image load failed!')
+    sys.exit()
+
+_, src_bin = cv2.threshold(src, 0, 255, cv2.THRESH_OTSU)
+
+cnt, labels, stats, centroids = cv2.connectedComponentsWithStats(src_bin)
+
+dst = cv2.cvtColor(src, cv2.COLOR_GRAY2BGR)
+
+for i in range(1, cnt):
+    (x,y,w,h,area) = stats[i]
+
+    if area < 20:
+        continue
+
+    cv2.rectangle(dst, (x,y,w,h), (0, 255, 255))
+
+cv2.imshow('src', src)
+cv2.imshow('src_bin', src_bin)
+cv2.waitKey('dst', dst)
+cv2.waitKey()
+cv2.destroyAllWindows()
