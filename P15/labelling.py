@@ -51,4 +51,4 @@ cv2.imshow('src', src)
 cv2.imshow('src_bin', src_bin)
 cv2.waitKey('dst', dst)
 cv2.waitKey()
-cv2.destroyAllWindows()
+cv2.destroyAllWindows() #
