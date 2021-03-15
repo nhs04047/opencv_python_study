@@ -39,6 +39,7 @@ cnt, labels, stats, centroids = cv2.connectedComponentsWithStats(src_bin)
 
 dst = cv2.cvtColor(src, cv2.COLOR_GRAY2BGR)
 
+#
 for i in range(1, cnt):
     (x,y,w,h,area) = stats[i]
 
