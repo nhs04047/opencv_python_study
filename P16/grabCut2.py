@@ -32,8 +32,7 @@ cv2.imshow('dst', dst)
 def on_mouse(event, x, y, flags, param):
     if event == cv2.EVENT_LBUTTONDOWN:  # 왼쪽 버튼은 전경
         cv2.circle(dst, (x, y), 3, (255, 0, 0), -1)  # 파랑색 색칠
-        cv2.circle(mask, (x, y)
-        3, cv2.GC_FGD, -1)  # 마스크에 전경 강제 지정
+        cv2.circle(mask, (x, y), 3, cv2.GC_FGD, -1)  # 마스크에 전경 강제 지정
         cv2.imshow('dst', dst)
     elif event == cv2.EVENT_RBUTTONDOWN:  # 오른쪽 버튼은 배경
         cv2.circle(dst, (x, y), 3, (0, 0, 255), -1)  # 빨강색 원
