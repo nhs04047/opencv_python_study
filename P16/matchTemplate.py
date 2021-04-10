@@ -44,3 +44,12 @@ cv2.imshow('res_norm', res_norm)
 cv2.imshow('dst', dst)
 cv2.waitKey()
 cv2.destroyAllWindows()
+
+#-------------------------------------
+
+# cv2.matchTemplate(image, templ, method, result=None, mask=None) -> result
+
+# image : 입력 영상. 8비트 또는 32비트.
+# templ : 템플릿 영상, image보다 같거나 작은 크기, 같은 타입
+# method : 비교 방법, cv2.TM_으로 시작하는 플래그 지정, 6가지
+# result : 비교 결과 행렬. numpy.ndarray. dtype=numpy.float32. image의 크기가 W*H이고, templ의 크기가 w*h이면 result크기는 (W - w+1)*(H-h+1).(가상의 픽셀이 가정되지 않기 때문)
