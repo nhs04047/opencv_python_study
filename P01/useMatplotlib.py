@@ -12,7 +12,7 @@ plt.axis('off')
 plt.imshow(img_gray, cmap='gray')
 plt.show()
 
-#두개의 이미지 한번에 출력하기
+# 두개의 이미지 한번에 출력하기
 plt.subplot(121), plt.axis('off'), plt.imshow(img_color_RBG)
 plt.subplot(122), plt.axis('off'), plt.imshow(img_gray,cmap='gray')
 plt.show()
