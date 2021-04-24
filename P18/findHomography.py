@@ -59,3 +59,21 @@ cv2.polylines(dst, [np.int32(corners2)], True, (0, 255, 0), 2, cv2.LINE_AA)
 cv2.imshow('dst', dst)
 cv2.waitKey()
 cv2.destroyAllWindows()
+
+######################################################################################
+
+# cv2.findHomography(srcPoints, dstPoints, method=None, ransacReprojThreshold=None, mask=None, maxIters=None, confidence=None) -> retval, mask
+
+# • srcPoints: 1번 이미지 특징점 좌표. numpy.ndarray. shape=(N, 1, 2). dtype=numpy.float32.
+
+# • dstPoints: 2번 이미지 특징점 점 좌표. numpy.ndarray. shape=(N, 1, 2). dtype=numpy.float32.
+
+# • method: 호모그래피 행렬 계산 방법. 0, LMEDS, RANSAC, RHO 중 선택. 기본값은 0이며, 이상치가 있을 경우 RANSAC, RHO 방법 권장.
+
+# • ransacReprojThreshold: RANSAC 재투영 에러 허용치. 기본값은 3.
+
+# • maxIters: RANSAC 최대 반복 횟수. 기본값은 2000.
+
+# • retval: 호모그래피 행렬. numpy.ndarray. shape=(3, 3). dtype=numpy.float32.
+
+# • mask: 출력 마스크 행렬. RANSAC, RHO 방법 사용 시 Inlier로 사용된 점들을 1로 표시한 행렬. numpy.ndarray. shape=(N, 1), dtype=uint8
